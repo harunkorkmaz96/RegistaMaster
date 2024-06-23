@@ -2,7 +2,7 @@
 
 namespace RegistaMaster.Domain.DTOModels.SecurityModels;
 
-public class SesssionDTO
+public class SessionDTO
 {
   public int Id { get; set; }
   public string Name { get; set; }
