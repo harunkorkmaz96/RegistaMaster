@@ -2,7 +2,7 @@
 
 namespace RegistaMaster.Domain.Entities;
 
-public class ErrorLog
+public class ErrorLog:BaseEntity
 {
   [DisplayName("Kullanıcı Adı ve Soyadı")]
   public string NameSurName { get; set; }
