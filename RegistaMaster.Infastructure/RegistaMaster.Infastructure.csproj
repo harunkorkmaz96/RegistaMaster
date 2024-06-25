@@ -10,8 +10,4 @@
     <ProjectReference Include="..\RegistaMaster.Persistance\RegistaMaster.Persistance.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Services\" />
-  </ItemGroup>
-
 </Project>
