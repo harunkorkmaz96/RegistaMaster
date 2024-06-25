@@ -3,7 +3,7 @@ using System.Linq.Expressions;
 
 namespace RegistaMaster.Application.Repositories;
 
-public interface IRepository
+public interface IBaseRepository
 {
   Task<T> Add<T>(T entity) where T : BaseEntity;
   T Update<T>(T entity) where T : BaseEntity;

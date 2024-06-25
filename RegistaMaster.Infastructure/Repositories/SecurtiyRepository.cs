@@ -18,7 +18,7 @@ public class SecurtiyRepository(IUnitOfWork unitOfWork, ISessionService sessionS
   {
     try
     {
-      var user = await _unitOfWork.Repository.Find<User>(t => (t.UserName == userName || t.Email == userName) &&
+      var user = await _unitOfWork.BaseRepository.Find<User>(t => (t.UserName == userName || t.Email == userName) &&
    t.Password == password && t.ObjectStatus == ObjectStatus.NonDeleted && t.Status == Status.Active);
       string result;
       if (user != null)

@@ -2,6 +2,6 @@
 
 public interface IUnitOfWork
 {
-  IRepository Repository { get; }
+  IBaseRepository BaseRepository { get; }
   ISecurityRepository SecurityRepository { get; }
 }

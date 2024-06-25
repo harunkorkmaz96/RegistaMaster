@@ -11,7 +11,7 @@ using System.Reflection;
 
 namespace RegistaMaster.Infastructure.Repositories;
 
-public class Repository(SessionDTO session, RegistaMasterContext context) : IRepository
+public class BaseRepository(SessionDTO session, RegistaMasterContext context) : IBaseRepository
 {
   private readonly SessionDTO _session = session;
   private readonly RegistaMasterContext _context = context;
@@ -22,7 +22,7 @@ public class Repository(SessionDTO session, RegistaMasterContext context) : IRep
   public async Task<T> Add<T>(T entity) where T : BaseEntity
   {
     entity.CreatedBy = _session.Id;
-    entity.LastModifedBy = _session.Id;
+    entity.LastModifiedBy = _session.Id;
     entity.LastModifiedOn = DateTime.Now;
     entity.CreatedOn = DateTime.Now;
     entity.Status = Status.Active;
@@ -34,65 +34,43 @@ public class Repository(SessionDTO session, RegistaMasterContext context) : IRep
   {
     var entity = await Find<T>(t => t.Id == id);
     await Delete<T>(entity);
-    return entity;
+    return await Delete(entity);
   }
   public async Task<T> Delete<T>(T entity) where T : BaseEntity
   {
-    try
+    entity.ObjectStatus = ObjectStatus.Deleted;
+    entity.Status = Status.Passive;
+    return Update(entity);
+  }
+  public async Task<ICollection<T>> DeleteRange<T>(ICollection<T> entities) where T : BaseEntity
+  {
+    foreach (var entity in entities)
     {
+      entity.LastModifiedBy = _session.Id;
+      entity.LastModifiedOn = DateTime.Now;
       entity.ObjectStatus = ObjectStatus.Deleted;
       entity.Status = Status.Passive;
-      Update<T>(entity);
-      return entity;
     }
-    catch (Exception e)
-    {
-      throw e;
-    }
-  }
-  public async Task<ICollection<T>> DeleteRange<T>(ICollection<T> entity) where T : BaseEntity
-  {
-    try
-    {
-      foreach (var item in entity)
-      {
-        item.LastModifedBy = _session.Id;
-        item.LastModifiedOn = DateTime.Now;
-        item.ObjectStatus = ObjectStatus.Deleted;
-        item.Status = Status.Passive;
-      }
-      GetTable<T>().UpdateRange(entity);
-      return entity;
-    }
-    catch (Exception e)
-    {
-
-      throw e;
-    }
+    GetTable<T>().UpdateRange(entities);
+    return entities;
   }
   public T Update<T>(T entity) where T : BaseEntity
   {
     entity.LastModifiedOn = DateTime.Now;
-    entity.LastModifedBy = _session.Id;
+    entity.LastModifiedBy = _session.Id;
     GetTable<T>().Update(entity);
     return entity;
   }
-  public async Task<ICollection<T>> UpdateRange<T>(ICollection<T> entity) where T : BaseEntity
+  public async Task<ICollection<T>> UpdateRange<T>(ICollection<T> entities) where T : BaseEntity
   {
-    try
+    foreach (var entity in entities)
     {
-      foreach (var item in entity)
-      {
-        item.LastModifiedOn = DateTime.Now;
-        item.LastModifedBy = _session.Id;
-      }
-      GetTable<T>().UpdateRange(entity);
-      return entity;
+      entity.LastModifiedOn = DateTime.Now;
+      entity.LastModifiedBy = _session.Id;
     }
-    catch (Exception e)
-    {
-      throw e;
-    }
+
+    GetTable<T>().UpdateRange(entities);
+    return entities;
   }
   public async Task<T> GetById<T>(int id) where T : BaseEntity
   {
@@ -100,14 +78,7 @@ public class Repository(SessionDTO session, RegistaMasterContext context) : IRep
   }
   public async Task<T> Find<T>(Expression<Func<T, bool>> expression) where T : BaseEntity
   {
-    try
-    {
-      return await GetTable<T>().FirstOrDefaultAsync(expression);
-    }
-    catch (Exception e)
-    {
-      throw e;
-    }
+    return await GetTable<T>().FirstOrDefaultAsync(expression);
   }
   public IQueryable<T> GetQueryable<T>(Expression<Func<T, bool>> expression) where T : BaseEntity
   {
@@ -115,15 +86,7 @@ public class Repository(SessionDTO session, RegistaMasterContext context) : IRep
   }
   public IQueryable<T> GetNonDeltedAndActive<T>(Expression<Func<T, bool>> expression) where T : BaseEntity
   {
-    try
-    {
-      return GetQueryable<T>(t => t.ObjectStatus == ObjectStatus.NonDeleted && t.Status == Status.Active).Where(expression);
-    }
-    catch (Exception e)
-    {
-
-      throw e;
-    }
+    return GetQueryable<T>(t => t.ObjectStatus == ObjectStatus.NonDeleted && t.Status == Status.Active).Where(expression);
   }
   public string GetDisplayValue<E>(E value)
   {
@@ -138,15 +101,7 @@ public class Repository(SessionDTO session, RegistaMasterContext context) : IRep
   }
   public List<SelectDTO> GetEnumSelect<E>()
   {
-    try
-    {
       return (Enum.GetValues(typeof(E)).Cast<E>().Select(e => new SelectDTO() { Text = GetDisplayValue<E>(e), Value = e.ToString(), Id = Convert.ToInt32(e) })).ToList();
-    }
-    catch (Exception e)
-    {
-
-      throw e;
-    }
   }
   public string lookupResource(Type resourceManagerProvider, string resourceKey)
   {
@@ -158,7 +113,6 @@ public class Repository(SessionDTO session, RegistaMasterContext context) : IRep
         return resourceManager.GetString(resourceKey);
       }
     }
-
-    return resourceKey; // Fallback with the key name
+return resourceKey; // Fallback with the key name
   }
 }
