@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using RegistaMaster.Domain.Entities;
+using RegistaMaster.Persistance.Seeds;
 using Action = RegistaMaster.Domain.Entities.Action;
 using Version = RegistaMaster.Domain.Entities.Version;
 
@@ -11,6 +12,12 @@ public class RegistaMasterContext : DbContext
   {
 
   }
+  protected override void OnModelCreating(ModelBuilder modelBuilder)
+  {
+    modelBuilder.ApplyConfiguration(new ManagerUserConfiguration());
+    base.OnModelCreating(modelBuilder);
+  }
+
 
   public DbSet<Customer> Customers { get; set; }
   public DbSet<User> Users { get; set; }

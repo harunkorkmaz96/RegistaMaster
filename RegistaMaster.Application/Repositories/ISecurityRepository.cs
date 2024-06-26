@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Http;
 using RegistaMaster.Domain.DTOModels.LoginModels;
-using RegistaMaster.Domain.Entities;
 
 namespace RegistaMaster.Application.Repositories;
 
