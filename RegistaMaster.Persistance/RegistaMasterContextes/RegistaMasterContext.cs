@@ -15,6 +15,7 @@ public class RegistaMasterContext : DbContext
   protected override void OnModelCreating(ModelBuilder modelBuilder)
   {
     modelBuilder.ApplyConfiguration(new ManagerUserConfiguration());
+    modelBuilder.ApplyConfiguration(new CustomerConfiguration());
     base.OnModelCreating(modelBuilder);
   }
 
