@@ -3,6 +3,8 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
+#pragma warning disable CA1814 // Prefer jagged arrays over multidimensional
+
 namespace RegistaMaster.Persistance.Migrations
 {
     /// <inheritdoc />
@@ -25,7 +27,7 @@ namespace RegistaMaster.Persistance.Migrations
                     CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
                     LastModifiedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
                     CreatedBy = table.Column<int>(type: "int", nullable: false),
-                    LastModifedBy = table.Column<int>(type: "int", nullable: false),
+                    LastModifiedBy = table.Column<int>(type: "int", nullable: false),
                     ObjectStatus = table.Column<int>(type: "int", nullable: false),
                     Status = table.Column<int>(type: "int", nullable: false)
                 },
@@ -45,7 +47,7 @@ namespace RegistaMaster.Persistance.Migrations
                     CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
                     LastModifiedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
                     CreatedBy = table.Column<int>(type: "int", nullable: false),
-                    LastModifedBy = table.Column<int>(type: "int", nullable: false),
+                    LastModifiedBy = table.Column<int>(type: "int", nullable: false),
                     ObjectStatus = table.Column<int>(type: "int", nullable: false),
                     Status = table.Column<int>(type: "int", nullable: false)
                 },
@@ -65,7 +67,7 @@ namespace RegistaMaster.Persistance.Migrations
                     CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
                     LastModifiedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
                     CreatedBy = table.Column<int>(type: "int", nullable: false),
-                    LastModifedBy = table.Column<int>(type: "int", nullable: false),
+                    LastModifiedBy = table.Column<int>(type: "int", nullable: false),
                     ObjectStatus = table.Column<int>(type: "int", nullable: false),
                     Status = table.Column<int>(type: "int", nullable: false)
                 },
@@ -91,7 +93,7 @@ namespace RegistaMaster.Persistance.Migrations
                     CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
                     LastModifiedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
                     CreatedBy = table.Column<int>(type: "int", nullable: false),
-                    LastModifedBy = table.Column<int>(type: "int", nullable: false),
+                    LastModifiedBy = table.Column<int>(type: "int", nullable: false),
                     ObjectStatus = table.Column<int>(type: "int", nullable: false),
                     Status = table.Column<int>(type: "int", nullable: false)
                 },
@@ -121,7 +123,7 @@ namespace RegistaMaster.Persistance.Migrations
                     CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
                     LastModifiedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
                     CreatedBy = table.Column<int>(type: "int", nullable: false),
-                    LastModifedBy = table.Column<int>(type: "int", nullable: false),
+                    LastModifiedBy = table.Column<int>(type: "int", nullable: false),
                     ObjectStatus = table.Column<int>(type: "int", nullable: false),
                     Status = table.Column<int>(type: "int", nullable: false)
                 },
@@ -149,7 +151,7 @@ namespace RegistaMaster.Persistance.Migrations
                     CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
                     LastModifiedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
                     CreatedBy = table.Column<int>(type: "int", nullable: false),
-                    LastModifedBy = table.Column<int>(type: "int", nullable: false),
+                    LastModifiedBy = table.Column<int>(type: "int", nullable: false),
                     ObjectStatus = table.Column<int>(type: "int", nullable: false),
                     Status = table.Column<int>(type: "int", nullable: false)
                 },
@@ -176,7 +178,7 @@ namespace RegistaMaster.Persistance.Migrations
                     CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
                     LastModifiedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
                     CreatedBy = table.Column<int>(type: "int", nullable: false),
-                    LastModifedBy = table.Column<int>(type: "int", nullable: false),
+                    LastModifiedBy = table.Column<int>(type: "int", nullable: false),
                     ObjectStatus = table.Column<int>(type: "int", nullable: false),
                     Status = table.Column<int>(type: "int", nullable: false)
                 },
@@ -205,7 +207,7 @@ namespace RegistaMaster.Persistance.Migrations
                     CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
                     LastModifiedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
                     CreatedBy = table.Column<int>(type: "int", nullable: false),
-                    LastModifedBy = table.Column<int>(type: "int", nullable: false),
+                    LastModifiedBy = table.Column<int>(type: "int", nullable: false),
                     ObjectStatus = table.Column<int>(type: "int", nullable: false),
                     Status = table.Column<int>(type: "int", nullable: false)
                 },
@@ -238,7 +240,7 @@ namespace RegistaMaster.Persistance.Migrations
                     CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
                     LastModifiedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
                     CreatedBy = table.Column<int>(type: "int", nullable: false),
-                    LastModifedBy = table.Column<int>(type: "int", nullable: false),
+                    LastModifiedBy = table.Column<int>(type: "int", nullable: false),
                     ObjectStatus = table.Column<int>(type: "int", nullable: false),
                     Status = table.Column<int>(type: "int", nullable: false)
                 },
@@ -267,7 +269,7 @@ namespace RegistaMaster.Persistance.Migrations
                     CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
                     LastModifiedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
                     CreatedBy = table.Column<int>(type: "int", nullable: false),
-                    LastModifedBy = table.Column<int>(type: "int", nullable: false),
+                    LastModifiedBy = table.Column<int>(type: "int", nullable: false),
                     ObjectStatus = table.Column<int>(type: "int", nullable: false),
                     Status = table.Column<int>(type: "int", nullable: false)
                 },
@@ -308,7 +310,7 @@ namespace RegistaMaster.Persistance.Migrations
                     CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
                     LastModifiedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
                     CreatedBy = table.Column<int>(type: "int", nullable: false),
-                    LastModifedBy = table.Column<int>(type: "int", nullable: false),
+                    LastModifiedBy = table.Column<int>(type: "int", nullable: false),
                     ObjectStatus = table.Column<int>(type: "int", nullable: false),
                     Status = table.Column<int>(type: "int", nullable: false)
                 },
@@ -354,7 +356,7 @@ namespace RegistaMaster.Persistance.Migrations
                     CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
                     LastModifiedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
                     CreatedBy = table.Column<int>(type: "int", nullable: false),
-                    LastModifedBy = table.Column<int>(type: "int", nullable: false),
+                    LastModifiedBy = table.Column<int>(type: "int", nullable: false),
                     ObjectStatus = table.Column<int>(type: "int", nullable: false),
                     Status = table.Column<int>(type: "int", nullable: false)
                 },
@@ -387,7 +389,7 @@ namespace RegistaMaster.Persistance.Migrations
                     CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
                     LastModifiedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
                     CreatedBy = table.Column<int>(type: "int", nullable: false),
-                    LastModifedBy = table.Column<int>(type: "int", nullable: false),
+                    LastModifiedBy = table.Column<int>(type: "int", nullable: false),
                     ObjectStatus = table.Column<int>(type: "int", nullable: false),
                     Status = table.Column<int>(type: "int", nullable: false)
                 },
@@ -414,7 +416,7 @@ namespace RegistaMaster.Persistance.Migrations
                     CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
                     LastModifiedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
                     CreatedBy = table.Column<int>(type: "int", nullable: false),
-                    LastModifedBy = table.Column<int>(type: "int", nullable: false),
+                    LastModifiedBy = table.Column<int>(type: "int", nullable: false),
                     ObjectStatus = table.Column<int>(type: "int", nullable: false),
                     Status = table.Column<int>(type: "int", nullable: false)
                 },
@@ -427,6 +429,21 @@ namespace RegistaMaster.Persistance.Migrations
                         principalTable: "Actions",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.InsertData(
+                table: "Customers",
+                columns: new[] { "Id", "Adress", "ApiKey", "CreatedBy", "CreatedOn", "CustomerDescriptionId", "Email", "LastModifiedBy", "LastModifiedOn", "Name", "ObjectStatus", "Status" },
+                values: new object[] { 1, "-", "-", 1, new DateTime(2024, 7, 6, 14, 5, 44, 71, DateTimeKind.Local).AddTicks(730), 1, "customer@customer.com", 1, new DateTime(2024, 7, 6, 14, 5, 44, 71, DateTimeKind.Local).AddTicks(731), "Customer", 0, 1 });
+
+            migrationBuilder.InsertData(
+                table: "Users",
+                columns: new[] { "Id", "AuthorizationStatus", "CreatedBy", "CreatedOn", "CustomerId", "Email", "Image", "LastModifiedBy", "LastModifiedOn", "Name", "ObjectStatus", "Password", "Status", "SurName", "UserName" },
+                values: new object[,]
+                {
+                    { 1, 0, 1, new DateTime(2024, 7, 6, 14, 5, 44, 71, DateTimeKind.Local).AddTicks(606), 1, "admin@admin.com", "-", 1, new DateTime(2024, 7, 6, 14, 5, 44, 71, DateTimeKind.Local).AddTicks(617), "Admin", 0, "123", 1, "Admin", "Admin" },
+                    { 2, 0, 1, new DateTime(2024, 7, 6, 14, 5, 44, 71, DateTimeKind.Local).AddTicks(645), 1, "TeamLeader@TeamLeader.com", "-", 1, new DateTime(2024, 7, 6, 14, 5, 44, 71, DateTimeKind.Local).AddTicks(646), "TeamLeader", 0, "123", 1, "TeamLeader", "TeamLeader" },
+                    { 3, 0, 1, new DateTime(2024, 7, 6, 14, 5, 44, 71, DateTimeKind.Local).AddTicks(651), 1, "Developer@Developer.com", "-", 1, new DateTime(2024, 7, 6, 14, 5, 44, 71, DateTimeKind.Local).AddTicks(652), "Developer", 0, "123", 1, "Developer", "Developer" }
                 });
 
             migrationBuilder.CreateIndex(

@@ -15,7 +15,7 @@ public class ManagerUserConfiguration : IEntityTypeConfiguration<User>
       UserName ="Admin",
       SurName = "Admin",
       Image = "-",
-      Email = "admin@admin.com",
+      Email = "Admin@Admin.com",
       Password = "123",
       AuthorizationStatus = Domain.Enums.AuthorizationStatus.Admin,
       CustomerId = 1,

@@ -12,8 +12,8 @@ using RegistaMaster.Persistance.RegistaMasterContextes;
 namespace RegistaMaster.Persistance.Migrations
 {
     [DbContext(typeof(RegistaMasterContext))]
-    [Migration("20240625152823_init_2")]
-    partial class init_2
+    [Migration("20240706110545_init_1")]
+    partial class init_1
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -185,6 +185,23 @@ namespace RegistaMaster.Persistance.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Customers");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Adress = "-",
+                            ApiKey = "-",
+                            CreatedBy = 1,
+                            CreatedOn = new DateTime(2024, 7, 6, 14, 5, 44, 71, DateTimeKind.Local).AddTicks(730),
+                            CustomerDescriptionId = 1,
+                            Email = "customer@customer.com",
+                            LastModifiedBy = 1,
+                            LastModifiedOn = new DateTime(2024, 7, 6, 14, 5, 44, 71, DateTimeKind.Local).AddTicks(731),
+                            Name = "Customer",
+                            ObjectStatus = 0,
+                            Status = 1
+                        });
                 });
 
             modelBuilder.Entity("RegistaMaster.Domain.Entities.ErrorLog", b =>
@@ -654,6 +671,62 @@ namespace RegistaMaster.Persistance.Migrations
                     b.HasIndex("CustomerId");
 
                     b.ToTable("Users");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            AuthorizationStatus = 0,
+                            CreatedBy = 1,
+                            CreatedOn = new DateTime(2024, 7, 6, 14, 5, 44, 71, DateTimeKind.Local).AddTicks(606),
+                            CustomerId = 1,
+                            Email = "admin@admin.com",
+                            Image = "-",
+                            LastModifiedBy = 1,
+                            LastModifiedOn = new DateTime(2024, 7, 6, 14, 5, 44, 71, DateTimeKind.Local).AddTicks(617),
+                            Name = "Admin",
+                            ObjectStatus = 0,
+                            Password = "123",
+                            Status = 1,
+                            SurName = "Admin",
+                            UserName = "Admin"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            AuthorizationStatus = 0,
+                            CreatedBy = 1,
+                            CreatedOn = new DateTime(2024, 7, 6, 14, 5, 44, 71, DateTimeKind.Local).AddTicks(645),
+                            CustomerId = 1,
+                            Email = "TeamLeader@TeamLeader.com",
+                            Image = "-",
+                            LastModifiedBy = 1,
+                            LastModifiedOn = new DateTime(2024, 7, 6, 14, 5, 44, 71, DateTimeKind.Local).AddTicks(646),
+                            Name = "TeamLeader",
+                            ObjectStatus = 0,
+                            Password = "123",
+                            Status = 1,
+                            SurName = "TeamLeader",
+                            UserName = "TeamLeader"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            AuthorizationStatus = 0,
+                            CreatedBy = 1,
+                            CreatedOn = new DateTime(2024, 7, 6, 14, 5, 44, 71, DateTimeKind.Local).AddTicks(651),
+                            CustomerId = 1,
+                            Email = "Developer@Developer.com",
+                            Image = "-",
+                            LastModifiedBy = 1,
+                            LastModifiedOn = new DateTime(2024, 7, 6, 14, 5, 44, 71, DateTimeKind.Local).AddTicks(652),
+                            Name = "Developer",
+                            ObjectStatus = 0,
+                            Password = "123",
+                            Status = 1,
+                            SurName = "Developer",
+                            UserName = "Developer"
+                        });
                 });
 
             modelBuilder.Entity("RegistaMaster.Domain.Entities.UserLog", b =>
