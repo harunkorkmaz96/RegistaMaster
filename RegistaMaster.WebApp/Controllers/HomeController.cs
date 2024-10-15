@@ -1,20 +1,32 @@
 using Microsoft.AspNetCore.Mvc;
+using RegistaMaster.Application.Repositories;
+using RegistaMaster.Domain.DTOModels.SecurityModels;
+using RegistaMaster.Domain.Enums;
 using RegistaMaster.WebApp.Models;
 using System.Diagnostics;
 
 namespace RegistaMaster.WebApp.Controllers
 {
-  public class HomeController : Controller
+  public class HomeController(ILogger<HomeController> logger, IUnitOfWork unitOfWork) : Controller
   {
-    private readonly ILogger<HomeController> _logger;
+    private readonly ILogger<HomeController> _logger = logger;
+    private readonly IUnitOfWork _unitOfWork = unitOfWork;
+    private readonly SessionDTO _session = unitOfWork.GetSession();
 
-    public HomeController(ILogger<HomeController> logger)
+    public async Task<IActionResult> Index()
     {
-      _logger = logger;
-    }
-
-    public IActionResult Index()
-    {
+      switch (_session.AuthorizationStatus)
+      {
+        case AuthorizationStatus.Admin:
+          ViewBag.Chart = await _unitOfWork.HomeRepository.AdminChart();
+          break;
+        case AuthorizationStatus.TeamLeader:
+          ViewBag.Chart = await _unitOfWork.HomeRepository.TeamLeaderChart(_session.Id);
+          break;
+        case AuthorizationStatus.Developer:
+          ViewBag.Chart = await _unitOfWork.HomeRepository.DeveloperChart(_session.Id);
+          break;
+      }
       return View();
     }
 
